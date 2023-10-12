@@ -1,16 +1,6 @@
-const App= () =>{
-  
-  console.log('hello from component')
-  const now= new Date()
-  console.log(now)
-  
-  return (
-  <div>
-    <p>Hello world! its now { now.toString() }</p>
-  </div>
-  
+const firstComponent = ()=>{
+  return(
+    <h1>Na oru component</h1>
   )
 }
-
-export default App;
-//changed
+export default firstComponent
