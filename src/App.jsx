@@ -1,6 +1,12 @@
 const App= () =>{
+  
+  console.log('hello from component')
+  
   return (
-  <p>Hello world</p>
+  <div>
+    <p>Hello world</p>
+  </div>
+  
   )
 }
 
