@@ -1,6 +1,17 @@
-const firstComponent = ()=>{
-  return(
-    <h1>Na oru component</h1>
+function Hello(){
+  return (
+    <p>vanakam bhaa</p>
   )
 }
-export default firstComponent
+
+function reuseComponent(){
+  return (
+    <div>
+      <Hello></Hello>
+      <Hello />
+
+      
+    </div>
+  )
+}
+export default reuseComponent
