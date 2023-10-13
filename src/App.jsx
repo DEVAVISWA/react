@@ -1,21 +1,6 @@
-function Hello(props){
-  console.log(props)
-  return (
-    <p>vanakam bhaa {props.username}</p>
+const greeet=() => {
+  return(
+    <div>Hello world!</div>
   )
 }
-
-function reuseComponent(){
-  let user1="deva"
-  let user2="viswa"
-  return (    
-    <div>
-      <Hello></Hello>
-      <Hello />
-      <Hello username={user1} />
-      <Hello username={user2} />      
-    </div>
-  )
-}
-//gonna study
-export default reuseComponent
+export default greeet
