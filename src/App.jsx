@@ -1,24 +1,20 @@
-// dynamically creating html
+//reusing component
+function Hello(){
+  return(
+    <p>Hello world</p>
+  )
+}
 
-// function timer () {
-//   const now = new Date()
-
-//   console.log(now)
-//   return(
-//     <div>
-//       hello its now {now.toString()}
-//     </div>
-//   )
-// }
-// export default timer
-
-function add () {
-  let a= 20
-  let b=30
+function greeting () {
   return(
     <div>
-      the sum of {a} and {b} is equal {a+b}
+      Greetings 
+      <Hello />
+      <Hello />
+      <Hello />
+      <Hello/>
     </div>
   )
 }
-export default add
+
+export default greeting
