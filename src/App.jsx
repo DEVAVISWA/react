@@ -1,25 +1,13 @@
-//creating a component arrow fn
+// dynamically creating html
 
-// const greet= () => {
-//   console.log('hello to console')
-//   return (    
-//     <div>
-//       <p>Hello Deva</p>
-//       <h1>Whats good my man!</h1>
-//     </div>
-//   )
-// }
-// export default greet
+function timer () {
+  const now = new Date()
 
-//another way of creating component
-function greet(){
-  console.log('hello to console')
-  return (
+  console.log(now)
+  return(
     <div>
-      <h1>Hello all</h1>
-      <p>This a para tag , this para is not about lorem ipsum !</p>
+      hello its now {now.toString()}
     </div>
   )
 }
-
-export default greet
+export default timer
