@@ -16,7 +16,7 @@ function greet(){
   console.log('hello to console')
   return (
     <div>
-      <h1><H></H>ello all</h1>
+      <h1>Hello all</h1>
       <p>This a para tag , this para is not about lorem ipsum !</p>
     </div>
   )
