@@ -8,7 +8,7 @@ function Hello(props) {
 
 function greeting() {
   let user1='deva'
-  let user2='viswa'
+  let user2='aravind'
   return (
     <div>
       Greetings
