@@ -1,13 +1,14 @@
 import React from 'react'
+import Note from './components/note'
 
-function App({note}) { //destructuring of obj from main.jsx
-  console.log(note)
+function App({notes}) { //destructuring of obj from main.jsx
+  console.log(notes)
   return (
     <div>
       <ul>
         {
-          note.map(notes=>
-            <li key={notes.id}> {notes.content} </li> )
+          notes.map(note=>
+            <Note key={note.id} note={ note }/> )
         }       
       </ul>
     </div>    
