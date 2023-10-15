@@ -2,9 +2,7 @@ import React from 'react'
 import Note from './components/note'
 
 function App({notes}) { 
- function saveButon(){
-  console.log('save button clicked')
- }
+ 
   return (
     <div>
       <ul>
@@ -15,7 +13,9 @@ function App({notes}) {
       </ul>
       <form >
         <input type="text" />
-        <button onClick={saveButon} >Save Note</button>
+        <button onClick={()=>{
+          console.log('save button clicked')
+        }} >Save Note</button>
       </form>
     </div>    
   )
