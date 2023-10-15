@@ -5,10 +5,10 @@ function App({note}) { //destructuring of obj from main.jsx
   return (
     <div>
       <ul>
-        <li> {note[0].content} </li>
-        <li> {note[1].content} </li>
-        <li> {note[2].content} </li>
-        <li> {note[3].content} </li>        
+        {
+          note.map(notes=>
+            <li> {notes.content} </li> )
+        }       
       </ul>
     </div>    
   )
