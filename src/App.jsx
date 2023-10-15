@@ -1,11 +1,10 @@
-import Hello from "./components/hello"
-function greet (){
-  const AGE= 70
+//type rfce
+import React from 'react'
+
+function App() {
   return (
-    <div>
-    <Hello username= {"devaviswa"} age= {26-1} />
-    <Hello username={'ganesan'} age= {AGE} />
-    </div>
+    <div>App</div>
   )
 }
-export default greet
+
+export default App
