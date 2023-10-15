@@ -1,9 +1,4 @@
-function Hello (props){
-  return (
-    <p>Hellon {props.username} {props.age} </p>
-  )
-}
-
+import Hello from "./components/hello"
 function greet (){
   const AGE= 70
   return (
