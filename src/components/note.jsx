@@ -2,7 +2,7 @@ import React from 'react'
 
 function Note({ note }) {
   return (
-    <li > {note.important==true ? note.content + "⭐" : note.content}  </li>
+    <li > {note.content} {note.important==true && '⭐'} </li>
   )
 }
 
