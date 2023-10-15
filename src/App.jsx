@@ -7,7 +7,7 @@ function App({note}) { //destructuring of obj from main.jsx
       <ul>
         {
           note.map(notes=>
-            <li> {notes.content} </li> )
+            <li key={notes.id}> {notes.content} </li> )
         }       
       </ul>
     </div>    
