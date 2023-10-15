@@ -1,13 +1,8 @@
 import React from 'react'
 
 function Note({ note }) {
-    if(note.important==true){
-        return (
-            <li > {note.content} ⭐ </li>
-          )
-    }
   return (
-    <li > {note.content}  </li>
+    <li > {note.important==true ? note.content + "⭐" : note.content}  </li>
   )
 }
 
