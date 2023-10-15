@@ -2,9 +2,8 @@ import React from 'react'
 import Note from './components/note'
 
 function App({notes}) { 
- const addNote = (event) =>{
-    event.preventDefault()
-    console.log(event.target)
+ function saveButon(){
+  console.log('save button clicked')
  }
   return (
     <div>
@@ -14,9 +13,9 @@ function App({notes}) {
             <Note key={note.id} note={ note }/> )
         }       
       </ul>
-      <form onSubmit={addNote}>
+      <form >
         <input type="text" />
-        <button type='submit' >Save Note</button>
+        <button onClick={saveButon} >Save Note</button>
       </form>
     </div>    
   )
