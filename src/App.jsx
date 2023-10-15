@@ -1,7 +1,7 @@
-//type rfce
 import React from 'react'
 
-function App() {
+function App({note}) {
+  console.log(note)
   return (
     <div>App</div>
   )
