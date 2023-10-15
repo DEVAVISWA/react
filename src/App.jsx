@@ -1,8 +1,11 @@
 import React from 'react'
 import Note from './components/note'
 
-function App({notes}) { //destructuring of obj from main.jsx
-  console.log(notes)
+function App({notes}) { 
+ const addNote = (event) =>{
+    event.preventDefault()
+    console.log(event.target)
+ }
   return (
     <div>
       <ul>
@@ -11,6 +14,10 @@ function App({notes}) { //destructuring of obj from main.jsx
             <Note key={note.id} note={ note }/> )
         }       
       </ul>
+      <form onSubmit={addNote}>
+        <input type="text" />
+        <button type='submit' >Save Note</button>
+      </form>
     </div>    
   )
 }
