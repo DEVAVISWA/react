@@ -1,4 +1,9 @@
 import React, {useState} from 'react'
+import Counter from './component/counter'
+import Button from './component/buttons'
+
+
+
 
 function App() {
   const [counter, setCounter] = useState(0)
@@ -13,10 +18,13 @@ function App() {
   }
   return (
     <div>
-      <p> {counter} </p>
-      <button onClick={handleClickPlus}>Plus</button>
-      <button onClick={handleClickZero}>Reset</button>
-      <button onClick={handleClickMinus}>Minus</button>
+      <Counter counter= {counter}/>
+      <Button handleClick={handleClickPlus} name='plus'/>
+      <Button handleClick={handleClickZero} name='zero'/>
+      <Button handleClick={handleClickMinus} name='minus'/>
+       
+      {/* <button onClick={handleClickZero}>Reset</button>
+      <button onClick={handleClickMinus}>Minus</button> */}
     </div>
   )
 }
