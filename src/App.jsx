@@ -1,49 +1,24 @@
-// State: state refers to the data
-// that is used to manage and represent the internal state of the component.
-// it allows the components to keep track of and manage their own data -> the data will change over the time as a result of user interactions, data fetching, or other factors.
+import React, {useState} from 'react'
 
-// whenever the state of a component changes, it will cause re-rendering of the component
-
-import React, { Component } from 'react';
-
-class App extends Component {
-
-  constructor(props) {
-    super(props); // to call the parent class constructor (x*x*x*)
-
-    // define the state
-    this.state = {
-      count: 0,
-    }
+function App() {
+  const [counter, setCounter] = useState(0)
+  function handleClickPlus(){
+    setCounter(counter +1 )
   }
-
-  increment = () => {
-    // update the state (data) of the count
-    this.setState({
-      // provide the new state
-      count: this.state.count + 1,
-    })
+  function handleClickZero(){
+    setCounter(0)
   }
-  decrement= () =>{
-    this.setState({
-      count: this.state.count-1
-    })
+  function handleClickMinus(){
+    setCounter(counter-1)
   }
-  reset= () =>{
-    this.setState({
-      count: 0
-    })
-  }
-  render() {
-    return (
-      <div>
-        <p>Count: { this.state.count }</p>
-        <button onClick={this.increment}>Increment</button>
-        <button onClick={this.decrement}>Decrement</button>
-        <button onClick={this.reset}>Reset</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <p> {counter} </p>
+      <button onClick={handleClickPlus}>Plus</button>
+      <button onClick={handleClickZero}>Reset</button>
+      <button onClick={handleClickMinus}>Minus</button>
+    </div>
+  )
 }
 
-export default App;
+export default App

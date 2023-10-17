@@ -15,7 +15,7 @@ const notes =[
     },
     {
         id: 3,
-        content: "nika what ",
+        content: "what",
         important: false
     },
     {
