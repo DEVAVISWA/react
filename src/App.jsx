@@ -1,11 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import Count from './component/count'
 
-function Count ({count}){
-    return(
-        <p>Counts : { count }</p>
-    )
-}
+
 
 function App() {
     const[count,setCount] = useState(0)
