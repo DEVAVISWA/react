@@ -2,14 +2,27 @@ import React from 'react'
 import { useState } from 'react'
 
 function App() {
-    const [inc,setInc]= useState(0)
+    const[count,setCount] = useState(0)
 
-    setTimeout(()=>{
-        setInc(inc+1)
-    },1000)
-    console.log('rendering', inc)
+    function increment () {
+        setCount(count+1)
+    }
+
+    function reset () {
+        setCount(0)
+    }
+
+    function decrement () {
+        setCount(count-1)
+    }
+
   return (
-    <div>App</div>
+    <div>
+        <p>Counts : {count}</p>
+        <button onClick={increment}>Increase</button>
+        <button onClick={reset}>Reset</button> 
+        <button onClick={decrement}>Decrease</button>
+    </div>
   )
 }
 
