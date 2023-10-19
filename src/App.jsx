@@ -1,6 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 
+function Count ({count}){
+    return(
+        <p>Counts : { count }</p>
+    )
+}
+
 function App() {
     const[count,setCount] = useState(0)
 
@@ -18,7 +24,7 @@ function App() {
 
   return (
     <div>
-        <p>Counts : {count}</p>
+        <Count count={count} />
         <button onClick={increment}>Increase</button>
         <button onClick={reset}>Reset</button> 
         <button onClick={decrement}>Decrease</button>
