@@ -2,7 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import Count from './component/count'
 
-
+function Button({onClicking, name} ){
+    return (
+        <button onClick={onClicking}> {name} </button>
+    )
+}
 
 function App() {
     const[count,setCount] = useState(0)
@@ -22,9 +26,9 @@ function App() {
   return (
     <div>
         <Count count={count} />
-        <button onClick={increment}>Increase</button>
-        <button onClick={reset}>Reset</button> 
-        <button onClick={decrement}>Decrease</button>
+        <Button onClicking = {increment} name={'Increment'}/>
+        <Button onClicking={reset} name={"Reset"}/> 
+        <Button onClicking= {decrement} name= {'Decrement'} />
     </div>
   )
 }
