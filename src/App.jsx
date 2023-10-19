@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 
+
+
+export class Hello extends Component {
+  render() {
+    return (
+      <u><i>HELLO</i></u>
+    )
+  }
+}
+
+
 export class App extends Component {
   render() {
     return (
       <div>
-        <p>hello world</p>
+        <Hello />
       </div>
     )
   }
