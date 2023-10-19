@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
-
-
-
-export class Hello extends Component {
-  render() {
-    return (
-      <u><i>HELLO</i></u>
-    )
-  }
-}
+import { Hello } from './components/hello'
 
 
 export class App extends Component {
   render() {
     return (
       <div>
-        <Hello />
+        <Hello name='devaviswa' />
       </div>
     )
   }
