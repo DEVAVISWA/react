@@ -2,36 +2,23 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-
-
 function App() {
-    const [data, setData] = useState(null)
+    const[count,setCount]= useState(0)
 
-    const fetchPost = async () => {
-        let response = await fetch('https://jsonplaceholder.typicode.com/posts')
-        let posts = await response.json()
-        setData(posts)
+    useEffect(()=>{
+        document.title= count
+    },[count])
+
+    let buttonHandler = () => {
+        setCount(count+1)
     }
-
-
-    useEffect(() => {
-        fetchPost()
-    }, [])
-    return (
-        <div>
-            <h2>The API datas are</h2>
-            {
-                data ? (
-                    <ul>
-                        {
-                            data.map(titles =>
-                                <li key={titles.id}> {titles.title} </li>)
-                        }
-                    </ul>
-                ) : (<p>Fetching datas...</p>)
-            }
-        </div>
-    )
+  return (
+    <div>
+        <h2>Title changer</h2>
+        <button onClick={buttonHandler}>Click to change title</button>
+    </div>
+    
+  )
 }
 
 export default App
