@@ -1,32 +1,48 @@
 import React from 'react'
 import { useState } from 'react'
-import Count from './component/count'
-import Button from './component/buttons'
+import { useEffect } from 'react'
+
+
+
 
 
 function App() {
-    const[count,setCount] = useState(0)
 
-    function increment () {
-        setCount(count+1)
+    const [posts, setPosts] = useState(null)
+
+    const fetchPost = async () => {
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts')
+        // console.log(response)
+        let data = await response.json()
+        // console.log(posts)
+        setPosts(data)
     }
+    
+    useEffect(() => {
+        fetchPost()
+    }, [])    
 
-    function reset () {
-        setCount(0)
-    }
-
-    function decrement () {
-        setCount(count-1)
-    }
-
-  return (
-    <div>
-        <Count count={count} />
-        <Button onClicking = {increment} name={'Increment'}/>
-        <Button onClicking={reset} name={"Reset"}/> 
-        <Button onClicking= {decrement} name= {'Decrement'} />
-    </div>
-  )
+    return (
+        <div>
+            <h2>API Datas</h2>
+            {
+                posts ? (
+                    <ul>
+                        {
+                            posts.map(post =>
+                                <li key={post.id}>{post.title} </li> )
+                        }
+                    </ul>
+                ) : ( <p>Fetcing Datas....</p> )
+            }
+        </div>
+    )
 }
 
 export default App
+
+
+//NORMAL FETCH CALL
+// fetch('https://jsonplaceholder.typicode.com/posts')
+//         .then(response=>response.json())
+//         .then(post=> console.log(post))
