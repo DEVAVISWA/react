@@ -4,45 +4,34 @@ import { useEffect } from 'react'
 
 
 
-
-
 function App() {
-
-    const [posts, setPosts] = useState(null)
+    const [data, setData] = useState(null)
 
     const fetchPost = async () => {
         let response = await fetch('https://jsonplaceholder.typicode.com/posts')
-        // console.log(response)
-        let data = await response.json()
-        // console.log(posts)
-        setPosts(data)
+        let posts = await response.json()
+        setData(posts)
     }
-    
+
+
     useEffect(() => {
         fetchPost()
-    }, [])    
-
+    }, [])
     return (
         <div>
-            <h2>API Datas</h2>
+            <h2>The API datas are</h2>
             {
-                posts ? (
+                data ? (
                     <ul>
                         {
-                            posts.map(post =>
-                                <li key={post.id}>{post.title} </li> )
+                            data.map(titles =>
+                                <li key={titles.id}> {titles.title} </li>)
                         }
                     </ul>
-                ) : ( <p>Fetcing Datas....</p> )
+                ) : (<p>Fetching datas...</p>)
             }
         </div>
     )
 }
 
 export default App
-
-
-//NORMAL FETCH CALL
-// fetch('https://jsonplaceholder.typicode.com/posts')
-//         .then(response=>response.json())
-//         .then(post=> console.log(post))
