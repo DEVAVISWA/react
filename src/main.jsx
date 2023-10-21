@@ -22,6 +22,11 @@ const notes =[
         id: 4,
         content: "didnt you get your moonlight",
         important: true
+    },
+    {
+        id: 5,
+        content: "spot light, moon light, what, didnt you get your moonlight",
+        important: true
     }
 ]
 
