@@ -1,42 +1,28 @@
-import React, { useState } from 'react'
-import Home from './component/home'
+import React from 'react'
+import {Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Notes from './component/notes'
 import Users from './component/users'
-
+import Home from './component/home'
 
 function App() {
-
-  const[page,setPage]=useState('home')
-
-  const toPage = (page) => (event)=> {
-    event.preventDefault()
-    setPage(page)
-  }
-
-  const contentToBeViewed= () =>{
-    if(page ==='home'){
-      return <Home />
-    }else if(page ==='notes') {
-      return <Notes />
-    }else if(page ==='users'){
-      return <Users />
-    }
-  }
-
-  const padding ={
-    padding: 5,
+  const padding= {
+    padding: 5
   }
   return (
-    <div>
+    <Router>
       <div>
-        <a href="" style={padding} onClick={toPage('home')}>Home</a>
-        <a href="" style={padding} onClick={toPage('notes')}>Notes</a>
-        <a href="" style={padding} onClick={toPage('users')}>Users</a>
+        <Link to={'/'} style={padding}>Home</Link>
+        <Link to={'/notes'} style={padding}>Notes</Link>
+        <Link to={'/users'} style={padding}>Users</Link>
       </div>
-      { contentToBeViewed() }
-    </div>
+      <Routes>
+        <Route path='/notes' element={<Notes />}></Route>
+        <Route path='/users' element={ <Users /> } />
+        <Route path='/' element={ <Home /> } />
+      </Routes>
+
+    </Router>
   )
 }
 
 export default App
-
