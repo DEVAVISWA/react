@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import Childcomp from './components/Childcomp'
 
-
+const MessageContext=createContext()
 
 function App() {
   const[data,setDate]= useState('Deva Viswa')
@@ -9,12 +9,14 @@ function App() {
   return (
     <div>
       <h1>Parent Comp</h1>
-      <i>message :- {data}</i>
+      <i>message :- {data}</i> <br />
       <b>The total coins are {coins}</b>
       <hr />
-      <Childcomp data={data} coins={coins}/>
+      <MessageContext.Provider value={{data,coins}} >
+      <Childcomp />
+      </MessageContext.Provider>
     </div>
   )
 }
 
-export default App
+export {App as default, MessageContext}
