@@ -1,17 +1,18 @@
-import React, { createContext, useState } from 'react'
-import ProfileComponent from './components/Profile'
+import React, { useState } from 'react'
+import Childcomp from './components/Childcomp'
 
-const ProfileContext= createContext()
+
+
 function App() {
-    const[profileName,setProfileName]=useState('')
+  const[data,setDate]= useState('Deva Viswa')
   return (
     <div>
-        <h1>Profile component</h1>
-        <ProfileContext.Provider value={{profileName,setProfileName}}>
-            <ProfileComponent />
-        </ProfileContext.Provider>
+      <h1>Parent Comp</h1>
+      <i>message :- {data}</i>
+      <hr />
+      <Childcomp data={data}/>
     </div>
   )
 }
 
-export {App as default,ProfileContext}
+export default App
