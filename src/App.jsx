@@ -1,22 +1,20 @@
 import React, { createContext, useState } from 'react'
-import Childcomp from './components/Childcomp'
+import Profile from './components/Profile'
 
-const MessageContext=createContext()
+
+
+const profileNameContext= createContext()
 
 function App() {
-  const[data,setDate]= useState('Deva Viswa')
-  const[coins,setCoins]= useState([1,2,5,10])
+  
+  const[profileName,setProfileName]= useState('')
   return (
-    <div>
-      <h1>Parent Comp</h1>
-      <i>message :- {data}</i> <br />
-      <b>The total coins are {coins}</b>
-      <hr />
-      <MessageContext.Provider value={{data,coins}} >
-      <Childcomp />
-      </MessageContext.Provider>
-    </div>
+    <profileNameContext.Provider value={{profileName,setProfileName}}>    
+      <div>
+        <Profile/>
+      </div>
+    </profileNameContext.Provider>
   )
 }
 
-export {App as default, MessageContext}
+export {App as default, profileNameContext}
