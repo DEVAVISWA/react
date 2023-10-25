@@ -1,20 +1,21 @@
-import React, { createContext, useState } from 'react'
-import Profile from './components/Profile'
-
-
-
-const profileNameContext= createContext()
+import React, { useReducer, useState } from 'react';
+import { initialState, reducer } from './reducers/countReducer';
 
 function App() {
-  
-  const[profileName,setProfileName]= useState('')
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <profileNameContext.Provider value={{profileName,setProfileName}}>    
-      <div>
-        <Profile/>
-      </div>
-    </profileNameContext.Provider>
+    <div>
+      <h3>Counter: { state.count }</h3>
+      <button onClick={() => dispatch({ type: 'incr' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decr' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+
+      <h4>Clicks History</h4>
+      <p>{ state.clickHistory }</p>
+    </div>
   )
 }
 
-export {App as default, profileNameContext}
+export default App;
