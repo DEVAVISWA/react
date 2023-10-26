@@ -1,71 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useReducer, useState } from 'react';
+import { initialState, reducer } from './reducers/countReducer';
 
 function App() {
 
-  const rows = useRef();
-
-  const changeRowColor = () => {
-    // select the elements
-    // console.log(rows.current.querySelectorAll('tbody tr'));
-    const rowsRef = rows.current.querySelectorAll('tbody tr');
-    rowsRef.forEach((row, index) => {
-      if (index % 2 == 0) {
-        row.style.backgroundColor = 'lightgrey';
-      }
-    })
-  }
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div>
-      <table ref={rows}>
-        <thead>
-          <tr>
-            <th>SNO</th>
-            <th>NAME</th>
-            <th>AGE</th>
-          </tr>
-        </thead>
+      <h3>Counter: { state.count }</h3>
+      <button onClick={() => dispatch({ type: 'incr' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decr' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Deva</td>
-            <td>25</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>mbneqw</td>
-            <td>89</td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td>asdgdf</td>
-            <td>23</td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td>hgjhjkrty</td>
-            <td>768</td>
-          </tr>
-
-          <tr>
-            <td>5</td>
-            <td>uiytvnb</td>
-            <td>354</td>
-          </tr>
-
-          <tr>
-            <td>6</td>
-            <td>ghfvxc</td>
-            <td>645</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <button onClick={changeRowColor}>Change Row Color</button>
+      <h4>Clicks History</h4>
+      <p>{ state.clickHistory }</p>
     </div>
   )
 }
