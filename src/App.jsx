@@ -1,21 +1,33 @@
-import React, { useReducer, useState } from 'react';
-import { initialState, reducer } from './reducers/countReducer';
+import React, { useState } from 'react'
 
 function App() {
+  const [count,setCount] = useState(0)
+  const [clickCount,setClickCount] = useState([])
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const incHandler= () => {
+    setCount(count+1)
+    setClickCount(clickCount.concat('Increment'))
+  }
+  const decHandler= () => {
+    setCount(count-1)
+    setClickCount(clickCount.concat('Decrement'))
+  }
+  const resetHandler= () => {
+    setCount(0)
+    setClickCount(clickCount.concat('Reset'))
+  }
 
   return (
     <div>
-      <h3>Counter: { state.count }</h3>
-      <button onClick={() => dispatch({ type: 'incr' })}>Increment</button>
-      <button onClick={() => dispatch({ type: 'decr' })}>Decrement</button>
-      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-
-      <h4>Clicks History</h4>
-      <p>{ state.clickHistory }</p>
+      <h3>Count :- {count} </h3>
+      <button onClick={incHandler}>Increment</button>
+      <button onClick={decHandler}>Decrement</button>
+      <button onClick={resetHandler}>Reset</button>
+      <h3>ClickHistory:- </h3>
+      <p>{clickCount.join(' , ')}</p>
     </div>
   )
 }
 
-export default App;
+export default App
