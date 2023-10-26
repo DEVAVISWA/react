@@ -1,18 +1,34 @@
-import React, { useReducer, useState } from 'react'
-import { initialState, reducer } from './reducers/countReducer'
+import React from 'react'
+import { useReducer } from 'react'
 
-function App() {
- 
-  const[state,dispatch] = useReducer(reducer,initialState)
+function App() { //1
+  const initialState = {
+    value: ''
+  }
 
+  //2                     //3
+  const inputReducer= (state, action) =>{
+   switch (action.type) { //9 
+      case 'change' : 
+        return {value: action.payload} //10
+        default :
+        return state //11
+        
+    }
+  }  
+
+  //4                                            //5    
+  const [state,dispatch] = useReducer(inputReducer,initialState)
   return (
+    
     <div>
-      <h3>Count :- {state.count} </h3>
-      <button onClick={()=>dispatch({type:'incr'})}>Increment</button>
-      <button onClick={()=>dispatch({type:'decr'})}>Decrement</button>
-      <button onClick={()=>dispatch({type:'reset'})}>Reset</button>
-      <h3>ClickHistory:- </h3>
-      <p>{state.clickHistory}</p>
+      <input type="text" placeholder='type your name' 
+                //6
+      onChange={e=>dispatch({
+        type: 'change',      //7 dispatch first argument
+        payload : e.target.value     //8 dispatch sec argument
+      })} />
+       <p>you have typed :- {state.value}</p>  {/*12 */}
     </div>
   )
 }
