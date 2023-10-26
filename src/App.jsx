@@ -1,21 +1,23 @@
-import React, { useReducer, useState } from 'react';
-import { initialState, reducer } from './reducers/countReducer';
+import React, { useRef } from 'react'
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const inputRef = useRef(null)
+
+  const buttonClickHandler = () => {
+    // console.log(inputRef)
+    // console.log(inputRef.current)
+    // console.log(inputRef.current.value)
+    // inputRef.current.value= 'devaviswa'
+    inputRef.current.focus()
+  }
 
   return (
     <div>
-      <h3>Counter: { state.count }</h3>
-      <button onClick={() => dispatch({ type: 'incr' })}>Increment</button>
-      <button onClick={() => dispatch({ type: 'decr' })}>Decrement</button>
-      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-
-      <h4>Clicks History</h4>
-      <p>{ state.clickHistory }</p>
+      <input type="text" ref={inputRef} />
+      <button onClick={buttonClickHandler}>Focus Input</button>
     </div>
   )
 }
 
-export default App;
+export default App 
