@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function App() {
+function App(props) {
+
+  const [notes,setNotes] = useState(props.notes)
   return (
-    <div>App</div>
+    <div>
+      <h1>Notes are</h1>
+      <ul>
+        {
+          notes.map(note =>
+            <li key={note.id}>{note.content}</li> 
+            )
+        }
+      </ul>
+    </div>
   )
 }
 
