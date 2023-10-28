@@ -47,11 +47,20 @@ function App() {
       important: newNoteImportant == 'true',
     }
 
-    setNotes(notes.concat(noteObject));
+    // setNotes(notes.concat(noteObject));
+    console.log('adding new note...')
+    axios 
+    .post('http://localhost:3001/notes/',noteObject)
+    .then(response=> {
+      console.log('note added successfully...')
+    })
+
+    fetchNotes()
 
     // clear the inputs
     setNewNoteContent('');
     setNewNoteImportant('');
+
 
     newNoteContentRef.current.focus();
   }
