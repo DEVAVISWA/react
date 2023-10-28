@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
 
-// 3. read the notes list and render it here
-
-function App(props) {
+ 
+function App() {
 
   // define a state to store the notes from props
-  const [notes, setNotes] = useState(props.notes);
+  const [notes, setNotes] = useState([]);
   // console.log(notes)
 
   const [showStatus, setShowStatus] = useState('all');
@@ -16,6 +16,26 @@ function App(props) {
 
   // define a contentRef to access and manipulate the content element
   const newNoteContentRef = useRef(null);
+
+
+  useEffect(()=> {
+    newNoteContentRef.current.focus()
+  },[])
+
+  useEffect(()=> {
+    fetchNotes();
+  },[])
+
+  const fetchNotes = async() =>{
+    try{
+      const response = await axios.get('http://localhost:3001/notes/')
+      // console.log(response)
+      // console.log(response.data)
+      setNotes(response.data)
+    } catch (error){
+      console.log('error fetching data', error)
+    }
+  }
 
   const addNote = (event) => {
     event.preventDefault();
