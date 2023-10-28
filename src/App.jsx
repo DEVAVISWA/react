@@ -6,6 +6,7 @@ function App(props) {
 
   // define a state to store the notes from props
   const [notes, setNotes] = useState(props.notes);
+  // console.log(notes)
 
   const [showStatus, setShowStatus] = useState('all');
 
