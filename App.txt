@@ -1,0 +1,7 @@
+<div>
+      <ReadNotes showStatus={showStatus} handleStatusChange={handleStatusChange} notes={notes}/>
+      <hr></hr>
+      <CreateNewNote addNote={addNote} newNoteContent={newNoteContent} 
+      newNoteImportant={newNoteImportant} newNoteContentRef={newNoteContentRef}
+      setNewNoteContent={setNewNoteContent} setNewNoteImportant={setNewNoteImportant} />
+    </div>

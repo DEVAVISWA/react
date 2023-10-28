@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import ReadNotes from './components/ReadNotes';
 import CreateNewNote from './components/CreateNewNote';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 
- 
+
 function App() {
 
   // define a state to store the notes from props
@@ -20,21 +22,19 @@ function App() {
   const newNoteContentRef = useRef(null);
 
 
-  useEffect(()=> {
-    newNoteContentRef.current.focus()
-  },[])
+  
 
-  useEffect(()=> {
+  useEffect(() => {
     fetchNotes();
-  },[])
+  }, [])
 
-  const fetchNotes = async() =>{
-    try{
+  const fetchNotes = async () => {
+    try {
       const response = await axios.get('http://localhost:3001/notes/')
       // console.log(response)
       // console.log(response.data)
       setNotes(response.data)
-    } catch (error){
+    } catch (error) {
       console.log('error fetching data', error)
     }
   }
@@ -51,11 +51,11 @@ function App() {
 
     // setNotes(notes.concat(noteObject));
     console.log('adding new note...')
-    axios 
-    .post('http://localhost:3001/notes/',noteObject)
-    .then(response=> {
-      console.log('note added successfully...')
-    })
+    axios
+      .post('http://localhost:3001/notes/', noteObject)
+      .then(response => {
+        console.log('note added successfully...')
+      })
 
     fetchNotes()
 
@@ -71,16 +71,33 @@ function App() {
     setShowStatus(event.target.value);
   }
 
-  
+  const padd = {
+    padding: 10
+  }
 
   return (
-    <div>
-      <ReadNotes showStatus={showStatus} handleStatusChange={handleStatusChange} notes={notes}/>
-      <hr></hr>
-      <CreateNewNote addNote={addNote} newNoteContent={newNoteContent} 
-      newNoteImportant={newNoteImportant} newNoteContentRef={newNoteContentRef}
-      setNewNoteContent={setNewNoteContent} setNewNoteImportant={setNewNoteImportant} />
-    </div>
+    <Router>
+      <div>
+        <Link to='/' style={padd}>DashBoard</Link>
+        <Link to='/read' style={padd}>Read Notes</Link>
+        <Link to='/create' style={padd}>Create Notes</Link>
+      </div>
+
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/read'
+          element={<ReadNotes showStatus={showStatus}
+            handleStatusChange={handleStatusChange}
+            notes={notes} />} />
+        <Route path='/create'
+          element={<CreateNewNote addNote={addNote}
+            newNoteContent={newNoteContent}
+            newNoteImportant={newNoteImportant}
+            newNoteContentRef={newNoteContentRef}
+            setNewNoteContent={setNewNoteContent}
+            setNewNoteImportant={setNewNoteImportant} />} />
+      </Routes>
+    </Router>
   )
 }
 
