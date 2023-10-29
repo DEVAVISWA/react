@@ -5,6 +5,7 @@ import CreateNewNote from './components/CreateNewNote';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import UpdateNote from './components/UpdateNote';
+import DeleteNote from './components/DeleteNote';
 
 function App() {
 
@@ -78,6 +79,7 @@ function App() {
         <Link to='/read' style={padd}>Read Notes</Link>
         <Link to='/create' style={padd}>Create Notes</Link>
         <Link to='/update' style={padd}>Update Notes</Link>
+        <Link to='/delete' style={padd}>Delete Note</Link>
       </div>
 
       <Routes>
@@ -98,6 +100,11 @@ function App() {
         element={ <UpdateNote notes={notes} 
         setNotes={setNotes}
         fetchNotes={fetchNotes} />}  />
+
+        <Route path='/delete' element={<DeleteNote 
+        notes={notes}
+        setNotes={setNotes}
+        fetchNotes={fetchNotes}  />} />
       </Routes>
     </Router>
   )

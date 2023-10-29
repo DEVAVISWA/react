@@ -44,16 +44,6 @@
       "id": 9,
       "content": "EFGH",
       "important": false
-    },
-    {
-      "id": 10,
-      "content": "HIJK",
-      "important": true
-    },
-    {
-      "id": 11,
-      "content": "LMFAO",
-      "important": false
     }
   ]
 }
