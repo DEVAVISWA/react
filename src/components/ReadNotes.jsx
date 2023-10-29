@@ -18,7 +18,6 @@ function ReadNotes({ handleStatusChange, showStatus, notes }) {
     return (
         <div>
             <h1>Notes</h1>
-
             <label>
                 <input
                     type='radio'
@@ -29,7 +28,6 @@ function ReadNotes({ handleStatusChange, showStatus, notes }) {
                 />
                 All Notes
             </label>
-
             <label>
                 <input
                     type='radio'
@@ -39,7 +37,6 @@ function ReadNotes({ handleStatusChange, showStatus, notes }) {
                 />
                 Important Notes
             </label>
-
             <label>
                 <input
                     type='radio'
@@ -49,7 +46,6 @@ function ReadNotes({ handleStatusChange, showStatus, notes }) {
                 />
                 Non-Important Notes
             </label>
-
             <ul>
                 {
                     notesFiltered.map(note =>

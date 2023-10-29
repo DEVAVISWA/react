@@ -4,7 +4,7 @@ import ReadNotes from './components/ReadNotes';
 import CreateNewNote from './components/CreateNewNote';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-
+import UpdateNote from './components/UpdateNote';
 
 function App() {
 
@@ -20,9 +20,6 @@ function App() {
 
   // define a contentRef to access and manipulate the content element
   const newNoteContentRef = useRef(null);
-
-
-  
 
   useEffect(() => {
     fetchNotes();
@@ -58,11 +55,10 @@ function App() {
       })
 
     fetchNotes()
-
+    
     // clear the inputs
     setNewNoteContent('');
     setNewNoteImportant('');
-
 
     newNoteContentRef.current.focus();
   }
@@ -81,6 +77,7 @@ function App() {
         <Link to='/' style={padd}>DashBoard</Link>
         <Link to='/read' style={padd}>Read Notes</Link>
         <Link to='/create' style={padd}>Create Notes</Link>
+        <Link to='/update' style={padd}>Update Notes</Link>
       </div>
 
       <Routes>
@@ -96,6 +93,11 @@ function App() {
             newNoteContentRef={newNoteContentRef}
             setNewNoteContent={setNewNoteContent}
             setNewNoteImportant={setNewNoteImportant} />} />
+
+        <Route path='/update' 
+        element={ <UpdateNote notes={notes} 
+        setNotes={setNotes}
+        fetchNotes={fetchNotes} />}  />
       </Routes>
     </Router>
   )
