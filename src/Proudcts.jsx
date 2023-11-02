@@ -1,9 +1,11 @@
 const products = [ {
-    "name" : 'velakku' ,
+    "id" : 1,
+    "name" : 'qwerty' ,
     "price" : 1000
 },
 {
-    "name" : 'bunn' ,
+    "id" : 2,
+    "name" : 'asdfg' ,
     "price" : 2000
 }
 

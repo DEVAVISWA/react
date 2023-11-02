@@ -6,8 +6,8 @@ function Section({ count, incrementHandler }) {
   
   return (    
     <div>
-       {products.map( product => {
-      <div className="col mb-5">
+       {products.map( product => (
+      <div key={product.id} className="col mb-5">
         <div className="card h-100">
           {/* <!-- Sale badge--> */}
           <div className="badge bg-dark text-white position-absolute" >Sale</div>
@@ -40,7 +40,7 @@ function Section({ count, incrementHandler }) {
           </div>
         </div>
       </div>
-      } ) }
+      ) ) }
     </div>
     
   )
