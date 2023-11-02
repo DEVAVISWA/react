@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 //define a initial state
 let initialState = {
@@ -21,45 +22,11 @@ const countReducer = (state = initialState.count, action) => {
     
     }
 }
-
-//create store
+ 
 const store = createStore(countReducer)
-console.log(store.getState())  //console to view the current state
 
-
-store.subscribe(()=> {
-    console.log(store.getState())
-})
-
-//dispatch
-store.dispatch({
-    type: 'INCR'
-})
-// console.log(store.getState()) 
-
-store.dispatch({
-    type: 'INCR'
-})
-// console.log(store.getState()) 
-
-store.dispatch({
-    type: 'INCR'
-})
-// console.log(store.getState()) 
-
-store.dispatch({
-    type: 'DECR'
-})
-// console.log(store.getState()) 
-
-store.dispatch({
-    type: 'RESET' 
-})
-// console.log(store.getState()) 
-
-store.subscribe(()=> {
-    console.log(store.getState())
-})
-// console.log(store.getState()) 
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+)
