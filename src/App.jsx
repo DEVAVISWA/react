@@ -3,8 +3,9 @@ import { createStore } from 'redux'
 
 const inputReducer = (state =[] , action) => {
   if(action.type=='NewNote'){
-    state.push(action.payload)
-    return state
+    // state.push(action.payload)
+    // return state
+    return state.concat(action.payload)
   }
   return state
 }
@@ -35,7 +36,7 @@ function App() {
     <div>
       {
         inputStore.getState().map(note =>
-          <li key={note.id}>{note.content}</li> )
+          <li key={note.id}>{note.content} {note.importance ? '⭐' : ''} </li> )
       }
     </div>
   )
