@@ -1,74 +1,39 @@
 import React from 'react'
-import { createStore } from 'redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { createNote, toogleImportanceOfID } from './reducers/noteReducer'
 
-const inputReducer = (state = [], action) => {
-  switch (action.type) {
-    case 'NewNote':
-      return state.concat(action.payload)
-
-    case 'Toogle':
-      const id = action.payload.id //get the value first and store it in a const so that we dont change the state directly
-      
-      const importanceToChange = state.find(n => n.id === id) //get the current state
-      
-      const changedNote = {  //make necessary change
-        ...importanceToChange,
-        importance : !importanceToChange.importance
-      }
-
-      return state.map(note =>
-          note.id !== id ? note : changedNote
-        )
-
-    default:
-      return state
-  }
-
-}
-const inputStore = createStore(inputReducer)
-
-inputStore.dispatch({
-  type: 'NewNote',
-  payload:
-  {
-    id: 1,
-    content: 'abcd',
-    importance: true
-  }
-})
-inputStore.dispatch({
-  type: 'NewNote',
-  payload:
-  {
-    id: 2,
-    content: 'efgh',
-    importance: false
-  }
-})
-inputStore.dispatch({
-  type: 'Toogle',
-  payload:
-  {
-    id: 1
-  }
-})
-inputStore.dispatch({
-  type: 'Toogle',
-  payload:
-  {
-    id: 2
-  }
-})
 
 
 function App() {
-  console.log(inputStore.getState())
+  const notes = useSelector(state => state)
+  const dispatch = useDispatch()
+
+
+  const addNote = (event) => {
+    event.preventDefault()
+    const typedNote= event.target.note.value
+    console.log(typedNote)
+    event.target.note.value= ''
+    dispatch(createNote(typedNote,notes.length))
+  }
+
+  const toogleImportance = (id) => {
+    dispatch(toogleImportanceOfID(id))
+  }
   return (
     <div>
-      {
-        inputStore.getState().map(note =>
-          <li key={note.id}>{note.content} {note.importance ? '⭐' : ''} </li>)
-      }
+      <form onSubmit={addNote}>
+        <input type="text" placeholder='type a note' name='note'/>        
+        <button type='sumit'>submit</button>
+      </form>
+      <div >
+        {
+          notes.map(note =>
+            <li onClick={() => toogleImportance(note.id)} 
+            key={note.id}>{note.typedNote} 
+            {note.importance ? '★' : '☆'} </li>)
+        }
+      </div>
     </div>
   )
 }
